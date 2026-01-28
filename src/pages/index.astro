@@ -77,15 +77,15 @@ const technologies = ['Python', 'JavaScript', 'React', 'Node.js', 'PostgreSQL', 
 		</div>
 		
 		<div class="hero-content wrapper">
-			<p class="hero-intro">Ingeniero Informático</p>
-			<h1 class="hero-title-pro">
+			<p class="hero-intro reveal">Ingeniero Informático</p>
+			<h1 class="hero-title-pro reveal">
 				Creo software<br>
 				<span class="hero-accent">que funciona.</span>
 			</h1>
-			<p class="hero-subtitle-pro">
+			<p class="hero-subtitle-pro reveal">
 				Desarrollo web, automatización y soporte IT.
 			</p>
-			<div class="hero-cta-pro">
+			<div class="hero-cta-pro reveal">
 				<a href="#contact" class="btn btn-primary"><span>Hablemos</span></a>
 			</div>
 		</div>
@@ -96,7 +96,7 @@ const technologies = ['Python', 'JavaScript', 'React', 'Node.js', 'PostgreSQL', 
 		<div class="wrapper">
 			<div class="services-row">
 				{services.map((service) => (
-					<div class="service-mini">
+					<div class="service-mini reveal-card">
 						<span class="service-icon-mini">{service.icon}</span>
 						<h3 class="service-title-mini">{service.title}</h3>
 						<p class="service-desc-mini">{service.description}</p>
@@ -109,11 +109,11 @@ const technologies = ['Python', 'JavaScript', 'React', 'Node.js', 'PostgreSQL', 
 	<!-- Proyectos - Solo 2 destacados -->
 	<section id="work" class="work-section">
 		<div class="wrapper">
-			<h2 class="work-title">Trabajo reciente</h2>
+			<h2 class="work-title reveal">Trabajo reciente</h2>
 			
 			<div class="work-grid">
 				{projects.map((project) => (
-					<article class="work-card">
+					<article class="work-card reveal-card">
 						<div class="work-image">
 							<img src={project.image} alt={project.title} loading="lazy">
 						</div>
@@ -130,7 +130,7 @@ const technologies = ['Python', 'JavaScript', 'React', 'Node.js', 'PostgreSQL', 
 				))}
 			</div>
 			
-			<p class="work-note">6 proyectos completados hasta la fecha.</p>
+			<p class="work-note reveal">6 proyectos completados hasta la fecha.</p>
 		</div>
 	</section>
 
@@ -138,10 +138,10 @@ const technologies = ['Python', 'JavaScript', 'React', 'Node.js', 'PostgreSQL', 
 	<section id="contact" class="contact-minimal">
 		<div class="wrapper">
 			<div class="contact-center">
-				<h2>¿Tienes un proyecto?</h2>
-				<p>Cuéntame qué necesitas.</p>
+				<h2 class="reveal">¿Tienes un proyecto?</h2>
+				<p class="reveal">Cuéntame qué necesitas.</p>
 				
-				<div class="contact-links">
+				<div class="contact-links reveal">
 					<a href="mailto:hans@email.com" class="contact-link-big">
 						hans@email.com
 					</a>
@@ -163,11 +163,14 @@ const technologies = ['Python', 'JavaScript', 'React', 'Node.js', 'PostgreSQL', 
 
 	<!-- Minimal Animations -->
 	<script>
+		import gsap from 'gsap';
+		import { ScrollTrigger } from 'gsap/ScrollTrigger';
 		import Lenis from 'lenis';
 		
-		// Lenis Smooth Scroll
+		gsap.registerPlugin(ScrollTrigger);
+		
 		const lenis = new Lenis({
-			duration: 1.2,
+			duration: 1.35,
 			easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
 			smooth: true,
 			smoothTouch: false,
@@ -179,10 +182,14 @@ const technologies = ['Python', 'JavaScript', 'React', 'Node.js', 'PostgreSQL', 
 		}
 		requestAnimationFrame(raf);
 		
+		lenis.on('scroll', ScrollTrigger.update);
+		gsap.ticker.add((time) => lenis.raf(time * 1000));
+		gsap.ticker.lagSmoothing(0);
+		
 		// Nav scroll state
 		window.addEventListener('scroll', () => {
 			const nav = document.querySelector('.nav');
-			if (window.scrollY > 50) {
+			if (window.scrollY > 40) {
 				nav?.classList.add('scrolled');
 			} else {
 				nav?.classList.remove('scrolled');
@@ -190,13 +197,61 @@ const technologies = ['Python', 'JavaScript', 'React', 'Node.js', 'PostgreSQL', 
 		});
 		
 		// Smooth scroll navigation
-		document.querySelectorAll('[data-scroll]').forEach(link => {
+		document.querySelectorAll('[data-scroll]').forEach((link) => {
 			link.addEventListener('click', (e) => {
 				e.preventDefault();
 				const target = document.getElementById(link.dataset.scroll);
-				if (target) lenis.scrollTo(target, { offset: -80, duration: 1.2 });
+				if (target) lenis.scrollTo(target, { offset: -80, duration: 1.1 });
 			});
 		});
+		
+		// Hero entrance
+		const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+		if (prefersReduced) {
+			gsap.set('.reveal, .reveal-card', { opacity: 1, y: 0, clearProps: 'transform' });
+		} else {
+			gsap.fromTo(
+				'.reveal',
+				{ y: 32, opacity: 0 },
+				{
+					y: 0,
+					opacity: 1,
+					duration: 1.1,
+					ease: 'power3.out',
+					stagger: 0.12
+				}
+			);
+			
+			gsap.utils.toArray('.reveal-card').forEach((card) => {
+				gsap.fromTo(
+					card,
+					{ y: 40, opacity: 0 },
+					{
+						y: 0,
+						opacity: 1,
+						duration: 1.0,
+						ease: 'power3.out',
+						scrollTrigger: {
+							trigger: card,
+							start: 'top 85%',
+							toggleActions: 'play none none reverse'
+						}
+					}
+				);
+			});
+		}
+		
+		// Subtle parallax glow
+		const glow = document.querySelector('.hero-glow');
+		if (glow) {
+			gsap.to(glow, {
+				y: 40,
+				duration: 6,
+				repeat: -1,
+				yoyo: true,
+				ease: 'sine.inOut'
+			});
+		}
 	</script>
 </body>
 </html>
