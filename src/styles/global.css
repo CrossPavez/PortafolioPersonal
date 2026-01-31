@@ -281,32 +281,34 @@ a {
 
 .client-logo {
   width: 100%;
-  height: 100px;
+  height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--space-sm);
-  background: var(--color-surface);
+  padding: var(--space-md);
+  background: linear-gradient(135deg, var(--color-surface) 0%, var(--color-elevated) 100%);
   border: 1px solid var(--color-border);
-  border-radius: 10px;
+  border-radius: 12px;
   transition: all var(--duration) var(--ease);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
 }
 
 .client-logo:hover {
-  border-color: rgba(61, 214, 255, 0.25);
-  transform: translateY(-2px);
+  border-color: rgba(61, 214, 255, 0.4);
+  transform: translateY(-4px);
+  box-shadow: 0 8px 24px rgba(61, 214, 255, 0.1);
 }
 
 .client-logo img {
-  max-width: 90%;
-  max-height: 90%;
+  max-width: 85%;
+  max-height: 85%;
   object-fit: contain;
-  filter: brightness(0.9);
+  filter: grayscale(100%) brightness(0.8) contrast(1.1);
   transition: filter var(--duration) var(--ease);
 }
 
 .client-logo:hover img {
-  filter: brightness(1);
+  filter: grayscale(40%) brightness(1) contrast(1.1);
 }
 
 .service-mini {
@@ -532,12 +534,13 @@ a {
   }
 
   .clients-grid {
-    grid-template-columns: repeat(auto-fit, minmax(110px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
     gap: var(--space-sm);
   }
 
   .client-logo {
-    height: 80px;
+    height: 100px;
+    padding: var(--space-sm);
   }
 }
 
