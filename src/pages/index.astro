@@ -9,6 +9,19 @@ import MERCADOCLEAN from '../assets/projects/MERCADOCLEAN.png';
 import NGFCHILE from '../assets/projects/NGFCHILE.png';
 import TRANSPORTEKMP from '../assets/projects/TRANSPORTEKMP.png';
 
+// Client logos
+import elementor from '../assets/clients/elementor.png';
+import jumpseller from '../assets/clients/Jumpseller_Logo.png';
+import shopify from '../assets/clients/shopify-2.svg';
+import wordpress from '../assets/clients/wordpress.png';
+
+const clients = [
+	{ name: 'Elementor', logo: elementor },
+	{ name: 'Jumpseller', logo: jumpseller },
+	{ name: 'Shopify', logo: shopify },
+	{ name: 'WordPress', logo: wordpress },
+];
+
 const services = [
 	{
 		icon: '⚡',
@@ -133,8 +146,11 @@ const technologies = ['Python', 'JavaScript', 'React', 'Node.js', 'PostgreSQL', 
 		<div class="wrapper">
 			<h2 class="clients-title reveal">Empresas que confían en nosotros</h2>
 			<div class="clients-grid reveal-card">
-				<!-- Los logos irán aquí dinámicamente -->
-				<p style="text-align: center; color: var(--color-text-muted); grid-column: 1 / -1;">Sube los logos a la carpeta src/assets/clients/</p>
+				{clients.map((client) => (
+					<div class="client-logo">
+						<img src={client.logo.src} alt={client.name} title={client.name} />
+					</div>
+				))}
 			</div>
 		</div>
 	</section>
