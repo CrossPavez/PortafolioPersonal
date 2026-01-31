@@ -1,6 +1,13 @@
 ---
 // Hans Portfolio - Minimalista & Directo
 import '../styles/global.css';
+import { Image } from 'astro:assets';
+import AZBEZIAD from '../assets/projects/AZBEZIAD.png';
+import HMMCODE from '../assets/projects/HMMCODE.png';
+import KIMYMANUALIDADES from '../assets/projects/KIMYMANUALIDADES.png';
+import MERCADOCLEAN from '../assets/projects/MERCADOCLEAN.png';
+import NGFCHILE from '../assets/projects/NGFCHILE.png';
+import TRANSPORTEKMP from '../assets/projects/TRANSPORTEKMP.png';
 
 const services = [
 	{
@@ -25,42 +32,42 @@ const projects = [
 		title: 'AZBEZIAD',
 		description: 'Sitio corporativo con foco en servicios y contacto directo.',
 		tags: ['Web', 'UI', 'SEO'],
-		image: '/assets/projects/AZBEZIAD.png',
+		image: AZBEZIAD,
 		url: 'https://azbeziad.cl'
 	},
 	{
 		title: 'HMMCODE',
 		description: 'Landing tecnológica con copy directo y estructura minimal.',
 		tags: ['Landing', 'Performance', 'UI'],
-		image: '/assets/projects/HMMCODE.png',
+		image: HMMCODE,
 		url: 'https://hmmcode.cl'
 	},
 	{
 		title: 'KIMY MANUALIDADES',
 		description: 'Catálogo artesanal con énfasis visual en productos.',
 		tags: ['Ecommerce', 'Catálogo', 'UX'],
-		image: '/assets/projects/KIMYMANUALIDADES.png',
+		image: KIMYMANUALIDADES,
 		url: 'https://kimymanualidades.cl'
 	},
 	{
 		title: 'MERCADO CLEAN',
 		description: 'Web de servicios con formularios y llamada a la acción.',
 		tags: ['Servicios', 'Lead Gen', 'UI'],
-		image: '/assets/projects/MERCADOCLEAN.png',
+		image: MERCADOCLEAN,
 		url: 'https://mercadoclean.cl'
 	},
 	{
 		title: 'NGF CHILE',
 		description: 'Presentación institucional con estructura clara y limpia.',
 		tags: ['Corporate', 'Brand', 'UX'],
-		image: '/assets/projects/NGFCHILE.png',
+		image: NGFCHILE,
 		url: 'https://ngfchile.cl'
 	},
 	{
 		title: 'TRANSPORTE KMP',
 		description: 'Landing logística con información clave y contacto rápido.',
 		tags: ['Logística', 'Landing', 'SEO'],
-		image: '/assets/projects/TRANSPORTEKMP.png',
+		image: TRANSPORTEKMP,
 		url: 'https://transportekmp.cl'
 	}
 ];
@@ -146,7 +153,15 @@ const technologies = ['Python', 'JavaScript', 'React', 'Node.js', 'PostgreSQL', 
 					<article class="work-card reveal-card">
 						<div class="work-image">
 							<a href={project.url} target="_blank" rel="noopener">
-								<img src={project.image} alt={project.title} loading="lazy">
+								<Image
+									src={project.image}
+									alt={project.title}
+									loading="lazy"
+									decoding="async"
+									sizes="(max-width: 768px) 100vw, 60vw"
+									widths={[640, 960, 1280, 1600]}
+									format="webp"
+								/>
 							</a>
 						</div>
 						<div class="work-info">
