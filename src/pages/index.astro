@@ -22,16 +22,46 @@ const services = [
 
 const projects = [
 	{
-		title: 'Automatización de Procesos',
-		description: 'Sistema que redujo tareas manuales en 70%',
-		tags: ['Python', 'FastAPI'],
-		image: '/assets/stock-1.jpg'
+		title: 'AZBEZIAD',
+		description: 'Sitio corporativo con foco en servicios y contacto directo.',
+		tags: ['Web', 'UI', 'SEO'],
+		image: '/assets/projects/AZBEZIAD.png',
+		url: 'https://azbeziad.cl'
 	},
 	{
-		title: 'Dashboard de Monitoreo',
-		description: 'Panel en tiempo real para servidores',
-		tags: ['React', 'Node.js'],
-		image: '/assets/stock-2.jpg'
+		title: 'HMMCODE',
+		description: 'Landing tecnológica con copy directo y estructura minimal.',
+		tags: ['Landing', 'Performance', 'UI'],
+		image: '/assets/projects/HMMCODE.png',
+		url: 'https://hmmcode.cl'
+	},
+	{
+		title: 'KIMY MANUALIDADES',
+		description: 'Catálogo artesanal con énfasis visual en productos.',
+		tags: ['Ecommerce', 'Catálogo', 'UX'],
+		image: '/assets/projects/KIMYMANUALIDADES.png',
+		url: 'https://kimymanualidades.cl'
+	},
+	{
+		title: 'MERCADO CLEAN',
+		description: 'Web de servicios con formularios y llamada a la acción.',
+		tags: ['Servicios', 'Lead Gen', 'UI'],
+		image: '/assets/projects/MERCADOCLEAN.png',
+		url: 'https://mercadoclean.cl'
+	},
+	{
+		title: 'NGF CHILE',
+		description: 'Presentación institucional con estructura clara y limpia.',
+		tags: ['Corporate', 'Brand', 'UX'],
+		image: '/assets/projects/NGFCHILE.png',
+		url: 'https://ngfchile.cl'
+	},
+	{
+		title: 'TRANSPORTE KMP',
+		description: 'Landing logística con información clave y contacto rápido.',
+		tags: ['Logística', 'Landing', 'SEO'],
+		image: '/assets/projects/TRANSPORTEKMP.png',
+		url: 'https://transportekmp.cl'
 	}
 ];
 
@@ -115,7 +145,9 @@ const technologies = ['Python', 'JavaScript', 'React', 'Node.js', 'PostgreSQL', 
 				{projects.map((project) => (
 					<article class="work-card reveal-card">
 						<div class="work-image">
-							<img src={project.image} alt={project.title} loading="lazy">
+							<a href={project.url} target="_blank" rel="noopener">
+								<img src={project.image} alt={project.title} loading="lazy">
+							</a>
 						</div>
 						<div class="work-info">
 							<h3>{project.title}</h3>
