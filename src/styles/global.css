@@ -1,5 +1,5 @@
 /* ===========================================
-   HANS PORTFOLIO - MINIMAL EDITION
+   MOERBECK PORTFOLIO - MINIMAL EDITION
    "Menos es más"
    =========================================== */
 
@@ -17,18 +17,18 @@
   --color-accent: #3dd6ff;
   --color-accent-soft: rgba(61, 214, 255, 0.16);
   --color-border: rgba(237, 237, 237, 0.08);
-  
+
   /* Typography */
   --font-sans: 'Inter Tight', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', monospace;
-  
+
   /* Spacing */
   --space-xs: 0.5rem;
   --space-sm: 1rem;
   --space-md: 2.5rem;
   --space-lg: 5rem;
   --space-xl: 9rem;
-  
+
   /* Transitions */
   --ease: cubic-bezier(0.16, 1, 0.3, 1);
   --duration: 0.45s;
@@ -326,12 +326,6 @@ a {
   background: var(--color-border);
 }
 
-.work-image a {
-  display: block;
-  width: 100%;
-  height: 100%;
-}
-
 .work-image img {
   width: 100%;
   height: 100%;
@@ -452,7 +446,7 @@ a {
   .nav-links {
     display: none;
   }
-  
+
   .mobile-menu-toggle {
     display: flex;
     flex-direction: column;
@@ -462,23 +456,23 @@ a {
     padding: 8px;
     cursor: pointer;
   }
-  
+
   .mobile-menu-toggle span {
     width: 20px;
     height: 2px;
     background: var(--color-text);
     transition: all var(--duration) var(--ease);
   }
-  
+
   .services-row {
     grid-template-columns: 1fr;
     gap: var(--space-md);
   }
-  
+
   .work-grid {
     grid-template-columns: 1fr;
   }
-  
+
   .hero-title-pro {
     font-size: clamp(2rem, 10vw, 3rem);
   }
