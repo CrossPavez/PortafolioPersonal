@@ -8,6 +8,7 @@ import KIMYMANUALIDADES from '../assets/projects/KIMYMANUALIDADES.png';
 import MERCADOCLEAN from '../assets/projects/MERCADOCLEAN.png';
 import NGFCHILE from '../assets/projects/NGFCHILE.png';
 import TRANSPORTEKMP from '../assets/projects/TRANSPORTEKMP.png';
+import logoHero from '../../moerbeck.png';
 
 const services = [
 	{
@@ -88,7 +89,7 @@ const technologies = ['Python', 'JavaScript', 'React', 'Node.js', 'PostgreSQL', 
 	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
 	<!-- Favicon -->
-	<link rel="icon" type="image/svg+xml" href="/favicon.svg">
+	<link rel="icon" type="image/png" href="/mlogo.png">
 </head>
 <body>
 	<!-- Navigation -->
@@ -115,10 +116,15 @@ const technologies = ['Python', 'JavaScript', 'React', 'Node.js', 'PostgreSQL', 
 
 		<div class="hero-content wrapper">
 			<p class="hero-intro reveal">Ingeniero Informático</p>
-			<h1 class="hero-title-pro reveal">
-				Creo software<br>
-				<span class="hero-accent">que funciona.</span>
-			</h1>
+			<div class="hero-title-container reveal">
+				<h1 class="hero-title-pro">
+					Creo software<br>
+					<span class="hero-accent">que funciona.</span>
+				</h1>
+				<div class="hero-logo">
+					<img src={logoHero.src} alt="Moerbeck" />
+				</div>
+			</div>
 			<p class="hero-subtitle-pro reveal">
 				Desarrollo web, automatización y soporte IT.
 			</p>
